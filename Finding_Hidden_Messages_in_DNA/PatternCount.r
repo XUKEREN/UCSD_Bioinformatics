@@ -12,7 +12,7 @@ mydata = fread('dataset_2_6.txt', stringsAsFactors = F, header = F)
 # split strings to characters
 mypattern <- mydata[2,1] %>% pull() %>% str_split(., "") %>% .[[1]]
 
-mystr = pattern <- mydata[1,1] %>% pull() %>% str_split(., "") %>% .[[1]]
+mystr <- mydata[1,1] %>% pull() %>% str_split(., "") %>% .[[1]]
 
 # initalize the number of matched pattern = 0
 npattern=0
