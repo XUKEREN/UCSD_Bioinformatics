@@ -19,7 +19,7 @@ t <- mydata[2,1] %>% pull() %>% str_split(., " ") %>% .[[1]] %>% .[3] %>% as.num
 
 
 # create a place holder list
-mylist <- vector(mode = "list", length = (length(mystr) - L + 1))
+mylist <- vector(mode = "list", length = (length(mystr) - k + 1))
 
 # put all the K-mer into mylist
 for (i in 1:(length(mystr) - k + 1)) {
@@ -46,7 +46,7 @@ for (i in 1:length(candidates)) {
   # create functions to get window size for each candidate
   window_diff <- freq_table %>% filter(patterns == candidates[i]) %>% pull(rowname) %>% diff() 
   for (j in 1:length(window_diff)) {
-    if (sum(window_diff[j:(j+t-2)]) <= L && !is.na(sum(window_diff[j:(j+t-2)]))) {
+    if ((sum(window_diff[j:(j+t-2)]) + k - 1) <= L && !is.na(sum(window_diff[j:(j+t-2)]))) {
       mylist2[[i]] <- candidates[i]
     } else {
       next;
@@ -63,7 +63,7 @@ L = 50
 t = 4
 
 # create a place holder list
-mylist <- vector(mode = "list", length = (length(mystr) - L + 1))
+mylist <- vector(mode = "list", length = (length(mystr) - k + 1))
 
 # put all the K-mer into mylist
 for (i in 1:(length(mystr) - k + 1)) {
@@ -90,7 +90,7 @@ for (i in 1:length(candidates)) {
   # create functions to get window size for each candidate
   window_diff <- freq_table %>% filter(patterns == candidates[i]) %>% pull(rowname) %>% diff() 
   for (j in 1:length(window_diff)) {
-    if (sum(window_diff[j:(j+t-2)]) <= L && !is.na(sum(window_diff[j:(j+t-2)]))) {
+    if ((sum(window_diff[j:(j+t-2)]) + k - 1) <= L && !is.na(sum(window_diff[j:(j+t-2)]))) {
       mylist2[[i]] <- candidates[i]
     } else {
       next;
