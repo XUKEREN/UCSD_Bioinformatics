@@ -15,4 +15,7 @@ Solving the Minimum Skew Problem now provides us with an approximate location of
 - `locating_ori.r`
 
 Hamming Distance Problem  
-- 
+- `HammingDistance.r`  
+
+Approximate Pattern Matching Problem: Find all approximate occurrences of a pattern in a string  
+- `approx_pattern_matching.r`
