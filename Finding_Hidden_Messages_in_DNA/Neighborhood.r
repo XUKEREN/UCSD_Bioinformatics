@@ -41,12 +41,11 @@ Neighbors <- function(pattern, d) {
   if (length(pattern) == 1) {
     
     return(print("pattern has only one letter"))
-    Neighborhood <- NULL
+    Neighborhood <- list(NULL)
     
   } else {
-    
     if (d == 0) {
-      Neighborhood = pattern  
+      Neighborhood = list(pattern)
     } else if (d == 1) {
       Neighborhood
     } else if (d > 1) {
@@ -56,7 +55,6 @@ Neighbors <- function(pattern, d) {
     }
     
   }
-  
   return(Neighborhood)
 }
 
@@ -101,27 +99,27 @@ AppendFirstSymbol <- function(pattern, d) {
   FirstSymbol <- pattern[1]
   SuffixPattern <- pattern[-1]
   
-  SuffixPattern_Neighbors <- Neighbors(SuffixPattern, 1)
+  SuffixPattern_Neighbors <- Neighbors(SuffixPattern, d)
   
   for (i in 1:length(SuffixPattern_Neighbors)) {
     
-    pattern <- SuffixPattern_Neighbors[[i]]
+    pattern2 <- SuffixPattern_Neighbors[[i]]
   
-    if (HammingDistance(pattern, SuffixPattern) < d) {
+    if (HammingDistance(pattern2, SuffixPattern) < d) {
       
       nucleotide <- c("A", "C", "G", "T")
       diff_nucleotide <- nucleotide[which(nucleotide!=FirstSymbol)] # find all the different nucleotide
       for (j in 1:length(diff_nucleotide)) {
-      new_pattern_list1[[length(diff_nucleotide)*(i-1) + j]] <- c(diff_nucleotide[j], pattern)
+      new_pattern_list1[[length(diff_nucleotide)*(i-1) + j]] <- c(diff_nucleotide[j], pattern2)
         
       }
     }
-    else if (HammingDistance(pattern, SuffixPattern) == d) {
-      new_pattern_list2[[i]] <- c(FirstSymbol, pattern)
+    else if (HammingDistance(pattern2, SuffixPattern) == d) {
+      new_pattern_list2[[i]] <- c(FirstSymbol, pattern2)
     } 
   }
   
-  new_pattern_list12 <- c(new_pattern_list1, new_pattern_list2, list(mypattern))
+  new_pattern_list12 <- c(new_pattern_list1, new_pattern_list2, list(pattern))
   
   new_pattern_list12 <- new_pattern_list12[!sapply(new_pattern_list12,is.null)] %>% unique()
   

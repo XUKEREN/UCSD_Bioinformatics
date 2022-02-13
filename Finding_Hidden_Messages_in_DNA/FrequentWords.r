@@ -31,3 +31,4 @@ mylist %>%
   filter(Freq == max(Freq)) %>% 
   pull(1)
 
+
