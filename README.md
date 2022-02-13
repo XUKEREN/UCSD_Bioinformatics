@@ -18,4 +18,6 @@ Hamming Distance Problem
 - `HammingDistance.r`  
 
 Approximate Pattern Matching Problem: Find all approximate occurrences of a pattern in a string  
-- `approx_pattern_matching.r`
+- `approx_pattern_matching.r`  
+- `count_approx_pattern_matching.r`  
+
