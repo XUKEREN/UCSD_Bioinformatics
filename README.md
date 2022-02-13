@@ -21,3 +21,8 @@ Approximate Pattern Matching Problem: Find all approximate occurrences of a patt
 - `approx_pattern_matching.r`  
 - `count_approx_pattern_matching.r`  
 
+Solve the Frequent Words with Mismatches Problem  
+- `FrequentWordsWithMismatches.r`
+
+Implement Neighbors to find the d-neighborhood of a string   
+- `Neighborhood.r`
