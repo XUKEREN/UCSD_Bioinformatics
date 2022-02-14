@@ -29,3 +29,9 @@ Solve the Frequent Words with Mismatches Problem
 
 Frequent Words with Mismatches and Reverse Complements Problem  
 - `FrequentWordsWithMismatchesComplements.r`
+
+Thermotoga petrophila DnaAboxes finder 
+- `DnaAboxes_search.r`  
+
+Bibliography Notes  
+- [Sedgewick and Flajolet, 2013 gave an overview of various approaches for computing the probabilities of patterns in a string.](https://aofa.cs.princeton.edu/home/)
