@@ -77,4 +77,3 @@ mypattern <- mydata[1,1] %>% pull() %>% str_split(., "") %>% .[[1]]
 mystring <- mydata[2,1] %>% pull() %>% str_split(., "") %>% .[[1]]
 d <- mydata[3,1] %>% pull()
 count(mypattern, mystring, d)
-

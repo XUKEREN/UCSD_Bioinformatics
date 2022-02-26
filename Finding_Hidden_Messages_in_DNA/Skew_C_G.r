@@ -38,3 +38,7 @@ skew_c_g("CATGGGCATCGGCCATACGCC")
 
 # apply it to "GAGCCACCGCGATA"
 skew_c_g("GAGCCACCGCGATA")
+
+
+
+skew_c_g("GCATACACTTCCCAGTAGGTACTG")

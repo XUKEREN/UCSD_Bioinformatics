@@ -133,4 +133,3 @@ for (i in 1:length(kmer_list)) {
 kmer_Neighborhood_freq_table <- kmer_Neighborhood %>% unlist() %>% data.frame() %>% table() 
 which(kmer_Neighborhood_freq_table == max(kmer_Neighborhood_freq_table)) %>% names() %>% data.frame() %>% fwrite("test.results.txt")
 
-

@@ -35,3 +35,14 @@ Thermotoga petrophila DnaAboxes finder
 
 Bibliography Notes  
 - [Sedgewick and Flajolet, 2013 gave an overview of various approaches for computing the probabilities of patterns in a string.](https://aofa.cs.princeton.edu/home/)
+
+
+Which DNA patterns play the role of molecular clocks  
+- What is the expected number of occurrences of a 9-mer in 500 random DNA strings, each of length 1000? Assume that the sequences are formed by selecting each nucleotide (A, C, G, T) with the same probability (0.25). `9-mer.in500randomDNAstrings.1000length.r`   
+
+Motif finding  
+- `MotifEnumeration.r`  
+
+
+
+

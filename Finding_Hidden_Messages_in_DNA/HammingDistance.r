@@ -12,6 +12,8 @@
 # Sample Output:
 #   
 # 3
+library(data.table)
+library(tidyverse)
 
 HammingDistance <- function(string1, string2) {
   # create two vectors from two strings
@@ -32,4 +34,3 @@ HammingDistance("GGGCCGTTGGT" , "GGACCGTTGAC")
 # read dataset 
 mydata = fread('dataset_9_3.txt', stringsAsFactors = F, header = F)
 HammingDistance(mydata[1,1] %>% pull() , mydata[2,1] %>% pull())
-

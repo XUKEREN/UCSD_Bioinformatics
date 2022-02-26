@@ -156,7 +156,3 @@ vectorList <- AppendFirstSymbol(mypattern, d)
 
 
 vectorList %>% map(paste, collapse="") %>% do.call(rbind, .) %>% as.data.frame() %>% fwrite("test.results.txt")
-
-
-
-
