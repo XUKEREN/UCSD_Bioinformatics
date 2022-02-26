@@ -47,6 +47,7 @@ Subtle Motif Problem
 - The Subtle Motif Problem refers to implanting a 15-mer with four random mutations in ten randomly generated 600 nucleotide-long strings (the typical length of many upstream regulatory regions). The instance of the Subtle Motif Problem that we will use has the implanted 15-mer AAAAAAAAGGGGGGG and is given below.  [dataset](/Finding_Hidden_Messages_in_DNA/subtle_motif_dataset.txt)
 
 
+Scoring Motifs  
 
 
 
