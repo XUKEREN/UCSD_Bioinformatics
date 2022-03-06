@@ -34,9 +34,6 @@ HammingDistance <- function(string1, string2) {
   }
 }
 
-pattern <- "AAA"
-Dna  <- c("TTACCTTAAC", "GATATCTGTC", "ACGGCGTTCG", "CCCTAAAGAG", "CGTCAGAGGT")
-
 
 DistanceBetweenPatternAndStrings_summary <- function(pattern, Dna) {
   # create a list to hold the results 

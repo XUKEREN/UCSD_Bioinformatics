@@ -51,7 +51,7 @@ Scoring Motifs
 
 From Motif Finding to Finding a Median String   
 - `DistanceBetweenPatternAndStrings.r`    
-- `MedianString.r`
+- `MedianString.r`   
 
 
 
