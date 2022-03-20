@@ -19,7 +19,7 @@ library(tidyverse)
 
 # GreedyMotifSearch(Dna, k, t)
 
-# great post explaining the Pseudo Code
+# great post explaining the Pseudo Code https://www.mrgraeme.com/greedy-motif-search/
 library(data.table)
 library(tidyverse)
 
