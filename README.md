@@ -56,6 +56,8 @@ From Motif Finding to Finding a Median String
 Greedy Motif Search  
 - Profile-most Probable k-mer Problem: Find a Profile-most probable k-mer in a string `Profile_most_Probable.r`  
 - `GreedyMotifSearch.r`  
+- substitute zeroes with small numbers called pseudocounts `GreedyMotifSearch_pseudocounts.r`  
+
 
 
 
