@@ -22,7 +22,6 @@ k <- fread("dataset_160_9.txt", fill = T) %>% .[1,1] %>% as.numeric() # k-mer
 t <- fread("dataset_160_9.txt", fill = T) %>% .[1,2] %>% as.numeric() # number of k-mer (number of the DNA string) for the profile 
 
 
-
 # first find out the first k-mer for each DNA string in mystring
 BestMotifs_function <- function(string, k) {
   string %>% str_split(., "") %>% .[[1]] %>% .[1:k] %>% paste(collapse = "")

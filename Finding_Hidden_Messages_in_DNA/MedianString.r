@@ -127,7 +127,7 @@ MedianString <- function(k, Dna) {
 MedianString(3, c("AAATTGACGCAT", "GACGACCACGTT", "CGTCAGCGCCTG", "GCTGAGCACCGG", "AGTTCGGGACAG"))
 
 
-
+MedianString(7, c("CTCGATGAGTAGGAAAGTAGTTTCACTGGGCGAACCACCCCGGCGCTAATCCTAGTGCCC", "GCAATCCTACCCGAGGCCACATATCAGTAGGAACTAGAACCACCACGGGTGGCTAGTTTC", "GGTGTTGAACCACGGGGTTAGTTTCATCTATTGTAGGAATCGGCTTCAAATCCTACACAG"))
 
 # modify the MedianString function to grab all kmers of all the sequences instead of listing all the potential k-mers to save time
 MedianString <- function(k, Dna) {
@@ -168,4 +168,3 @@ MedianString <- function(k, Dna) {
 myk <- fread("dataset_158_9.txt", fill = T) %>% .[1,1] %>% pull() %>% as.numeric()
 myDna <- fread("dataset_158_9.txt", fill = T) %>% pull() %>% .[-1]
 MedianString(myk, myDna)
-
