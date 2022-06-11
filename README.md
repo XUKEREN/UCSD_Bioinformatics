@@ -118,5 +118,13 @@ Our proposed greedy motif search algorithm, GreedyMotifSearch, starts by forming
 ## Rolling dice to find motifs      
 - `RandomizedMotifSearch.r`  
 
+## How Can a Randomized Algorithm Perform So Well?  
+- `How_Can_a_Randomized_Algorithm_Perform_So_Well.r`  
+
+## Gibbs Sampling   
+
+
+
+
 
 
