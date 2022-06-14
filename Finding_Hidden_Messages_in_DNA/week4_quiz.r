@@ -1,42 +1,37 @@
-# Exercise Break: Prove that RandomizedMotifSearch, whose pseudocode is reproduced below, will eventually terminate. (Note: this is an ungraded exercise.)
+# 5.
+# Question 5
+# Assume we are given the following strings Dna:
+#   
+#   ATGAGGTC
 # 
-# RandomizedMotifSearch(Dna, k, t)
-# randomly select k-mers Motifs = (Motif1, …, Motift) in each string from Dna
-# BestMotifs ← Motifs
-# while forever
-# Profile ← Profile(Motifs)
-# Motifs ← Motifs(Profile, Dna)
-# if Score(Motifs) < Score(BestMotifs)
-# BestMotifs ← Motifs
-# else
-# return BestMotifs
+# GCCCTAGA
+# 
+# AAATAGAT
+# 
+# TTGTGCTA
+# 
+# Then, assume that RandomizedMotifSearch begins by randomly choosing the following 3-mers Motifs of Dna:
+#   
+# GTC
+# 
+# CCC
+# 
+# ATA
+# 
+# GCT
+# 
+# What are the 3-mers after one iteration of RandomizedMotifSearch?  In other words, what are the 3-mers Motifs(Profile(Motifs), Dna)?  Please enter your answer as four space-separated strings.
+
 
 library(data.table)
 library(tidyverse)
 library(foreach)
 library(doParallel)
-# import the dataset  
-mystring <- fread("dataset_161_5.txt", fill = T) %>% .[2] %>% as.vector() %>% as.character()
-k <- fread("dataset_161_5.txt", fill = T) %>% .[1,1] %>% as.numeric() # k-mer
-t <- fread("dataset_161_5.txt", fill = T) %>% .[1,2] %>% as.numeric() # number of k-mer (number of the DNA string) for the profile  
 
-# example 4
-mystring <- fread("./RandomizedMotifSearch/inputs/input_4.txt", fill = T) %>% .[2] %>% as.vector() %>% as.character()
-k <- fread("./RandomizedMotifSearch/inputs/input_4.txt", fill = T) %>% .[1,1] %>% as.numeric() # k-mer
-t <- fread("./RandomizedMotifSearch/inputs/input_4.txt", fill = T) %>% .[1,2] %>% as.numeric() # number of k-mer (number of the DNA string) for the profile  
+k <- 3
+t <- 4
+mystring <- c("AAGCCAAA", "AATCCTGG", "GCTACTTG", "ATGTTTTG")
 
-
-k <- 6
-t <- 8 
-mystring <- c("GCACATCATTAAACGATTCGCCGCATTGCCTCGATTAACC", "TCATAACTGACACCTGCTCTGGCACCGCTCATCCAAGGCC", "AAGCGGGTATAGCCAGATAGTGCCAATAATTTCCTTAACC", "AGTCGGTGGTGAAGTGTGGGTTATGGGGAAAGGCAAGGCC", "AACCGGACGGCAACTACGGTTACAACGCAGCAAGTTAACC", "AGGCGTCTGTTGTTGCTAACACCGTTAAGCGACGAAGGCC", "AAGCTTCCAACATCGTCTTGGCATCTCGGTGTGTTTAACC", "AATTGAACATCTTACTCTTTTCGCTTTCAAAAAAAAGGCC")
-
-k <- 8
-t <- 5 
-mystring <- c("CGCCCCTCTCGGGGGTGTTCAGTAAACGGCCA", "GGGCGAGGTATGTGTAAGTGCCAAGGTGCCAG", "TAGTACCGAGACCGAAAGAAGTATACAGGCGT", "TAGATCAAGTTTCAGGTGCACGTCGGTGAACC", "AATCCACCAGCTCCACGTGCAATGTTGGCCTA")
-
-k <- 6
-t <- 8 
-mystring <- c("AATTGGCACATCATTATCGATAACGATTCGCCGCATTGCC", "GGTTAACATCGAATAACTGACACCTGCTCTGGCACCGCTC", "AATTGGCGGCGGTATAGCCAGATAGTGCCAATAATTTCCT", "GGTTAATGGTGAAGTGTGGGTTATGGGGAAAGGCAGACTG", "AATTGGACGGCAACTACGGTTACAACGCAGCAAGAATATT", "GGTTAACTGTTGTTGCTAACACCGTTAAGCGACGGCAACT", "AATTGGCCAACGTAGGCGCGGCTTGGCATCTCGGTGTGTG", "GGTTAAAAGGCGCATCTTACTCTTTTCGCTTTCAAAAAAA")
 
 # for loop to iterate 1000 times 
 
@@ -51,25 +46,12 @@ comb <- function(x, ...) {
          function(i) c(x[[i]], lapply(list(...), function(y) y[[i]])))
 }
 
-myoutput <- foreach(i=1:500, .combine='comb',  .multicombine=TRUE, .init=list(list(), list()), .packages=c("data.table", "tidyverse")) %dopar% {
+myoutput <- foreach(i=1, .combine='comb',  .multicombine=TRUE, .init=list(list(), list()), .packages=c("data.table", "tidyverse")) %dopar% {
   # for as long as the score of the constructed motifs keeps improving, which is exactly what RandomizedMotifSearch does. To implement this algorithm, you will need to randomly select the initial collection of k-mers that form the motif matrix Motifs. To do so, you will need a random number generator (denoted RandomNumber(N)) that is equally likely to return any integer from 1 to N. You might like to think about this random number generator as an unbiased N-sided die.
   
-  # function to randomly select the k-mer for each DNA string in mystring
-  RandomMotifGenerator <- function(string, k) {
-    
-    # create a random number generator function 
-    RandomNumberGenerator <- function(string, k){
-      sample(1:(length(string %>% str_split(., "") %>% .[[1]]) - k + 1), 1, replace = F) # should set replace = F
-    }
-    
-    MyRandomNumber <- RandomNumberGenerator(string, k)
-    
-    string %>% str_split(., "") %>% .[[1]] %>% .[MyRandomNumber:(MyRandomNumber+k-1)] %>% paste(collapse = "")
-    
-  }
-  
+
   # apply the function to mystring to extract a random k-mer from each dna string.
-  best_motifs <- mystring %>% map(RandomMotifGenerator, k) %>% unlist()
+  best_motifs <- c("CCA", "CCT", "CTT", "TTG")
   
   # This list will be used to compare against other motif lists that we will build later in the algorithm
   
@@ -272,5 +254,12 @@ my_best_motifs_list <- myoutput[[1]]
 my_best_motifs_list[my_best_motifs_scores_index][[1]] %>% noquote()
 
 
+# other questions  
+
+# RandomizedMotifSearch** performs poorly when given a uniform profile matrix. → F
+
+# it is possible for **RandomizedMotifSearch** to move from a collection of motifs with lower score to a collection of motifs with higher score. - F
+
+# Which of the following motif-finding algorithms is guaranteed to find an optimum solution? In other words, which of the following are not heuristics? (Select all that apply.) - median string 
 
 

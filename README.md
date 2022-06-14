@@ -122,6 +122,19 @@ Our proposed greedy motif search algorithm, GreedyMotifSearch, starts by forming
 - `How_Can_a_Randomized_Algorithm_Perform_So_Well.r`  
 
 ## Gibbs Sampling   
+Note that **RandomizedMotifSearch** may change all t strings Motifs in a single iteration. This strategy may prove reckless, since some correct motifs (captured in Motifs) may potentially be discarded at the next iteration. **GibbsSampler** is a more cautious iterative algorithm that discards **a single k-mer** from the current set of motifs at each iteration and decides to either keep it or replace it with a new one. This algorithm thus moves with more caution in the space of all motifs, as illustrated below.  
+
+![](./img/randomized_vs_gibbs.png)  
+
+Like RandomizedMotifSearch, GibbsSampler starts with randomly chosen k-mers in each of t DNA sequences, but it makes a random rather than a deterministic choice at each iteration. It uses randomly selected k-mers (Motif1, …, Motift) to come up with another (hopefully better scoring) set of k-mers. In contrast with RandomizedMotifSearch (which deterministically defines new motifs as  
+
+`Motifs(Profile(Motifs), Dna)`,  
+
+GibbsSampler randomly selects an integer i between 1 and t and then randomly changes only a single k-mer Motifi.  
+
+- `GibbsSampler.r`  
+- `week4_quiz.r`  
+
 
 
 
